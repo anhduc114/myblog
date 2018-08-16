@@ -35,11 +35,16 @@
                                 <th>{{$post->title}}</th>
                                 <th>{{substr($post->body,0,50)}}{{strlen($post->body > 50 ? "..." : "")}}</th>
                                 <th>{{$post->created_at}}</th>
-                                <td><a href="{{route('posts.show',$post->id)}}" class="btn btn-default btn-sm" >View</a><a href="{{route('posts.edit',$post->id)}}" class="btn btn-default btm-sm">Edit</a></td>
+                                <td><a href="{{route('posts.show',$post->id)}}" class="btn btn-default btn-sm" >View</a>
+                                    <a href="{{route('posts.edit',$post->id)}}" class="btn btn-default btm-sm">Edit</a></td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
+
+                <div class="text-center">
+                    {!! $posts->links(); !!}
+                </div>
             </div>
         </div>
     </div>
