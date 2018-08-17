@@ -20,29 +20,14 @@
 
     <div class="row">
         <div class="col-md-8">
+            @foreach($posts as $post)
             <div class="Post">
-                <h3>Post Title</h3>
-                <p>Free content here....</p>
-                <a class="btn btn-primary btn-lg" href="#" role="button">Read more</a>
+                <h3>{{$post->title}}</h3>
+                <p>{{substr($post->body,0,300)}}{{strlen($post->body) >300 ? "..." : ""}}</p>
+                <a class="btn btn-primary btn-lg" href="{{url('blog/'.$post->slug)}}" role="button">Read more</a>
             </div>
-            <hr>
-            <div class="Post">
-                <h3>Post Title</h3>
-                <p>Free content here....</p>
-                <a class="btn btn-primary btn-lg" href="#" role="button">Read more</a>
-            </div>
-            <hr>
-            <div class="Post">
-                <h3>Post Title</h3>
-                <p>Free content here....</p>
-                <a class="btn btn-primary btn-lg" href="#" role="button">Read more</a>
-            </div>
-            <hr>
-            <div class="Post">
-                <h3>Post Title</h3>
-                <p>Free content here....</p>
-                <a class="btn btn-primary btn-lg" href="#" role="button">Read more</a>
-            </div>
+                @endforeach
+
         </div>
 
         <div class="col-md-3 col-md-offset-1">
