@@ -28,6 +28,10 @@ Route::post('password/reset','Auth\ResetPasswordController@reset');
 Route::resource('categories','CategoryController', ['except' => ['create']]);
 //Route::get('categories/index','CategoryController@index');
 
+//Tags
+Route::resource('tags','TagController', ['except' => ['create']]);
+
+
 Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])
 ->where('slug','@[\w\d\-\_]+');  //retrict slug character so keyboard can type out
 Route::get('blog', ['uses' => 'BlogController@getIndex', 'as' => 'blog.index']);
