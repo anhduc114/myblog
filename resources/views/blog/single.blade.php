@@ -8,5 +8,7 @@
             <h1>{{$post->title}}</h1>
             <p>{{$post->body}}</p>
         </div>
+        <hr>
+        <p>Posted In: {{$post->category->name}}</p>
     </div>
     @endsection
