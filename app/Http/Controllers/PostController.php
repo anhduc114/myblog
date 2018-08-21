@@ -157,6 +157,9 @@ class PostController extends Controller
     {
         $post = Post::find($id);
 
+        //remove references of post and tag
+        $post->tags()->detach();
+
         $post->delete();
 
         Session::flash('success','Successfully deleted.');
