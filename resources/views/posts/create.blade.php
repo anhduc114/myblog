@@ -4,7 +4,10 @@
 
 @section('stylesheets')
 {!! Html::style('css/select2.min.css') !!}
-    @endsection
+
+
+
+@endsection
 @section('content')
 
     <div class="row">
@@ -37,6 +40,7 @@
             {{Form::textarea('body',null,array('class' => 'form-control'))}}
             {{Form::submit('Create Post', array('class'=>'btn btn-success btn-lg btn-block'))}}
             {!! Form::close() !!}
+
         </div>
     </div>
 

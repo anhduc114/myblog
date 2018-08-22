@@ -56,12 +56,12 @@ class CommentsController extends Controller
         $comment->email = $request->email;
         $comment->comment = $request->comment;
         $comment->approved = true;
-        $comment->post()->associate();
+        $comment->post()->associate($post);
 
         $comment->save();
 
         Session::flash('success','Comment added');
-         return redirect()->route(['blog.single', [$post->slug]]);
+         return redirect()->route('blog.single', [$post->slug]);
     }
 
 

@@ -41,7 +41,7 @@ Route::resource('tags','TagController', ['except' => ['create']]);
 
 
 Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])
-->where('slug','@[\w\d\-\_]+');  //retrict slug character so keyboard can type out
+->where('slug','[\w\d\-\_]+');  //retrict slug character so keyboard can type out
 Route::get('blog', ['uses' => 'BlogController@getIndex', 'as' => 'blog.index']);
 Route::get('/','PagesController@getIndex');
 Route::get('contact','PagesController@getContact');
