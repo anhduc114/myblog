@@ -14,7 +14,7 @@
         <div class="col-md-8 col-md-offset-2">
             <h1>Create New Post</h1>
             <hr>
-            {!! Form::open(['route' => 'posts.store']) !!}
+            {!! Form::open(array('route' => 'posts.store', 'files' => true)) !!}
             {{Form::label('title','Title:')}}
             {{Form::text('title',null,array('class' => 'form-control'))}}
 
@@ -35,6 +35,8 @@
                 @endforeach
             </select>
 
+            {{Form::label('featured_image','Upload Featured Image:')}}
+            {{Form::file('featured_image')}}
 
             {{Form::label('body',"Post Body:")}}
             {{Form::textarea('body',null,array('class' => 'form-control'))}}

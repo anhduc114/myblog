@@ -1,3 +1,4 @@
+
 @extends('main')
 <?php $titleTag = htmlspecialchars($post->title) ?>
 @section('title', "| $titleTag")
@@ -5,6 +6,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+            <img src="{{asset('images/'). $post->image}}" height="400" width="800"/>
             <h1>{{$post->title}}</h1>
             <p>{{$post->body}}</p>
         <hr>
@@ -15,8 +17,16 @@
             <div class="col-md-8 col-md-offset-2">
                 @foreach($post->comments as $comment)
                     <div class="comment">
-                        <p><strong>Name: </strong>{{$comment->name}}</p>
-                        <p><strong>Comment:</strong><br/>{{$comment->comment}};</p><br>
+                    <div class="author-info">
+                        <img src="" class="author-image">
+                        <div class="author-name">
+                           <h4>{{$comment->name}}</h4>
+                        <p>{{$comment->created_at}}</p>
+                        </div>
+                    </div>
+                        <div class="comment-content">
+                            {{$comment -> comment}}
+                        </div>
                     </div>
                 @endforeach
             </div>
