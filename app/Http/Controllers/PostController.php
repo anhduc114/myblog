@@ -8,6 +8,7 @@ use Session;
 use App\Post;
 use App\Tag;
 use App\Http\Controllers\Controller;
+use Image;
 
 class PostController extends Controller
 {
@@ -66,6 +67,16 @@ class PostController extends Controller
         $post->slug = $request->slug;
         $post->category_id = $request->category_id;
         $post->body = $request->body;
+
+        //save image
+        if ($request->hasFile('featured_image')){
+            $image = $request->file('featured_image');
+            $filename = time().'.'. $image->getClientOriginalExtension();
+            $location = public_path('images/'. $filename);
+            Image::make($image)->resize(800,400)->save($location);
+
+            $post->image = $filename;
+        }
 
         $post->save();
 
@@ -136,15 +147,7 @@ class PostController extends Controller
 
         $post->body = $request->input('body');
 
-        //save image
-        if ($request->hasFile('featured_image')){
-            $image = $request->file('featured_image');
-            $filename = time().'.'. $image->getClientOriginalExtension();
-            $location = public_path('images/'. $filename);
-            Image::make($image)->resize(800,400)->save($location);
 
-            $post->image = $filename;
-        }
         $post->save();
 
         if(isset($request->tags)) {
