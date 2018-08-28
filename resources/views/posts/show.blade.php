@@ -1,4 +1,3 @@
-
 @extends('main')
 @section('titie', '| View Post')
 

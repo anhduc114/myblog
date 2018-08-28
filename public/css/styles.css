@@ -33,3 +33,11 @@
     font-size: 16px;
     line-height: 1.3em;
 }
+
+.comments-title{
+    margin-bottom: 45px;
+}
+
+.comments-title>span{
+    margin-right: 15px;
+}
