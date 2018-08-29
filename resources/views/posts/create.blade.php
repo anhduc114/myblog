@@ -49,7 +49,7 @@
     @endsection
 
 @section('scripts')
-    {!! Html::script('select2.min.js') !!}
+    {!! Html::script('js/select2.min.js') !!}
 
     <script type="text/javascript">
         $('.select2-multi').select2();

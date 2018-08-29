@@ -1,6 +1,11 @@
 
 @extends('main')
 <?php $titleTag = htmlspecialchars($post->title) ?>
+<style type="text/css">
+    img {
+        background-image: url('images/defaultblog.jpg')
+    }
+</style>
 @section('title', "| $titleTag")
 
 @section('content')
@@ -19,7 +24,9 @@
                 @foreach($post->comments as $comment)
                     <div class="comment">
                     <div class="author-info">
-                        <img src="{{"https://www.gravatar.com/avatar/" . md5(strtolower(trim($comment->email))) . "?s=50&d=mm"}}" class="author-image">
+                            <img src="{{"https://www.gravatar.com/avatar/" . md5(strtolower(trim($comment->email))) . "?s=50&d=mm"}}" onerror="this.src='public/images/defaultblog.jpg'" class="author-image"/>
+
+
                         <div class="author-name">
                            <h4>{{$comment->name}}</h4>
                         <p class="author-time">{{$comment->created_at}}</p>
@@ -61,3 +68,5 @@
         </div>
     </div>
     @endsection
+
+

@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Session;
 use App\Post;
 use App\Tag;
 use App\Http\Controllers\Controller;
 use Image;
+//use Storage;
 
 class PostController extends Controller
 {
@@ -58,7 +60,8 @@ class PostController extends Controller
            'title'          => 'required|max:255',
             'slug'          => 'required|alpha_dash|min:5|max:255',
             'category_id'   => 'required|integer',
-            'body'          => 'required'
+            'body'          => 'required',
+            'featured_image'=> 'sometimes|image'
         ));
 
         //store in the database
@@ -132,11 +135,14 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         //Validate the data
+        $post = Post::find($id);
         $this->validate($request,array(
             'title'         => 'required|max:255',
-            'slug'          => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
+            'slug'          => "required|alpha_dash|min:5|max:255|unique:posts,slug,$id",
             'category_id'   => 'required|integer',
-            'body'          => 'required'
+            'body'          => 'required',
+            'featured_image'=> 'image'
+
 
         ));
         //Save to database
@@ -147,6 +153,18 @@ class PostController extends Controller
 
         $post->body = $request->input('body');
 
+        if($request->hasFile('featured_image')){
+            //add new photo
+            $image = $request->file('featured_image');
+            $filename = time().'.'. $image->getClientOriginalExtension();
+            $location = public_path('images/'. $filename);
+            Image::make($image)->resize(800,400)->save($location);
+            $oldfilename = $post->image;
+            //update the database
+            $post->image = $filename;
+            //delete old photo
+            Storage::delete($oldfilename);
+        }
 
         $post->save();
 

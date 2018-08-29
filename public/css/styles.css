@@ -41,3 +41,34 @@
 .comments-title>span{
     margin-right: 15px;
 }
+
+.navbar-brand{
+    color: #DADADA;
+    font-size: 16px;
+    font-family: 'Roboto Slab', serif;
+}
+
+/*.container-fluid{*/
+    /*background-color: #e3342f;*/
+
+/*}*/
+
+ul[title="navbar"]{
+    text-decoration-color: #F5F7FA;
+    color: #DA4454;
+
+}
+
+li[title="navbar"]{
+    color: #DA4454;
+
+}
+
+img:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    height: 400px;
+    width: 800px;
+    background-image:url('https://techtalk.vn/wp-content/uploads/2018/04/techtalk-blog.jpg')
+}

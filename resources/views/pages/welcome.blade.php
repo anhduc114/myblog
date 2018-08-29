@@ -22,9 +22,10 @@
         <div class="col-md-8">
             @foreach($posts as $post)
             <div class="Post">
-                <h3>{{$post->title}}</h3>
+                <h3><strong>{{$post->title}}</strong></h3>
                 <p>{{substr($post->body,0,300)}}{{strlen($post->body) >300 ? "..." : ""}}</p>
-                <a class="btn btn-primary btn-lg" href="{{url('blog/'.$post->slug)}}" role="button">Read more</a>
+                <a class="btn btn-primary " href="{{url('blog/'.$post->slug)}}" role="button">Read more</a>
+                <hr>
             </div>
                 @endforeach
 
