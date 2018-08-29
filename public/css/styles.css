@@ -64,11 +64,21 @@ li[title="navbar"]{
 
 }
 
-img:before {
+img[class*="defaultimg"]:before {
     content: ' ';
     display: block;
     position: absolute;
     height: 400px;
     width: 800px;
+    background-image:url('https://techtalk.vn/wp-content/uploads/2018/04/techtalk-blog.jpg')
+}
+
+
+img[class*="homepageimg"]:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    height: 200px;
+    width: 242px;
     background-image:url('https://techtalk.vn/wp-content/uploads/2018/04/techtalk-blog.jpg')
 }

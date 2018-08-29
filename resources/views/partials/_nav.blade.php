@@ -43,7 +43,9 @@
                 </li>
                     @else
                 <a href="{{route('login')}}" class="btn btn-default" style="margin-top: 10px;">Login</a>
-                    @endif
+                    <a href="{{route('signup')}}" class="btn btn-default" style="margin-top: 10px;">Signup</a>
+
+                @endif
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

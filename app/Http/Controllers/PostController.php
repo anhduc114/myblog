@@ -190,7 +190,7 @@ class PostController extends Controller
 
         //remove references of post and tag
         $post->tags()->detach();
-
+        Storage::delete($post->image);
         $post->delete();
 
         Session::flash('success','Successfully deleted.');
