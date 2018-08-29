@@ -12,7 +12,7 @@
         <div class="col-md-12">
             <div class="jumbotron">
                 <h1>Welcome to my blog!</h1>
-                <p class="lead">Ty for visiting :)</p>
+                <p class="lead">Fuk u for visiting :)</p>
                 <p><a class="btn btn-primary btn-lg" href="#" role="button">Popular Post</a></p>
             </div>
         </div>
@@ -21,16 +21,21 @@
     <div class="row">
         <div class="col-md-8">
             @foreach($posts as $post)
-            <div class="Post">
-                <img src="{{asset('images/'. $post->image)}}" height="400" width="800" class="defaultimg"/>
+                    <div class="row">
+                    <div class="leftcolumn">
+                        <div class="card">
+                            <img src="{{asset('images/'. $post->image)}}" height="400" width="800" class="defaultimg"/>
+                            <h2><strong>{{$post->title}}</strong></h2>
 
-                <h3><strong>{{$post->title}}</strong></h3>
-                <p class="author-time"><span class="glyphicon glyphicon-calendar"> </span>  {{date('M j,Y', strtotime($post->created_at))}}</p>
-                <p>{{substr($post->body,0,300)}}{{strlen($post->body) >300 ? "..." : ""}}</p>
-                <a class="btn btn-primary " href="{{url('blog/'.$post->slug)}}" role="button">Read more</a>
-                <hr>
-            </div>
-                @endforeach
+                            <p class="author-time"><span class="glyphicon glyphicon-calendar"> </span>  {{date('M j,Y', strtotime($post->created_at))}}</p>
+
+                            <p>{{substr($post->body,0,300)}}{{strlen($post->body) >300 ? "..." : ""}}</p>
+                            <a class="btn btn-primary " href="{{url('blog/'.$post->slug)}}" role="button">Read more</a>
+
+                        </div>
+                    </div>
+                </div>
+                    @endforeach
         </div>
 
 
@@ -47,8 +52,40 @@
             {{--</div>--}}
             {{--@endforeach--}}
         {{--</div>--}}
+
+
+
         <div class="col-md-3 col-md-offset-1">
-            <h3>Side bar</h3>
+            <div class="rightcolumn">
+                <div class="card">
+                    <h3>Popular Post</h3>
+                    <div class="fakeimg"><p>Image</p></div>
+                    <div class="fakeimg"><p>Image</p></div>
+                    <div class="fakeimg"><p>Image</p></div>
+                </div>
+
+                <div class="card">
+                    <h3>Tags</h3>
+                    @foreach($tags as $tag)
+                        <a href="{{route('tags.show', $tag->id)}}"><span class = "label label-default">{{$tag->name}}</span></a>
+
+                    @endforeach
+                </div>
+
+                <div class="card">
+                    <h3>Categories</h3>
+
+                @foreach ($categories as $category)
+                        <tr>
+
+                            <th>{{$category->id}}</th>
+
+                            <td>{{$category->name}}</td>
+                        </tr>
+                        <br>
+                    @endforeach
+                </div>
+            </div>
         </div>
         <div/>
     </div>
@@ -58,3 +95,4 @@
     <link rel="stylesheets" type="text/css"
     <script src="js/scripts.js"></script>
 @endsection--}}
+

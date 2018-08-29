@@ -2,8 +2,9 @@
 <html lang="en">
 @include('partials._head')
 
-<body>
 @include('partials._nav')
+
+<body>
 
 <!-- Default Bootstrap navbar -->
 <div class="container">

@@ -1,3 +1,8 @@
+* {
+    box-sizing: border-box;
+}
+
+
 .btn-h1-spacing{
     margin-top:18px;
 }
@@ -81,4 +86,50 @@ img[class*="homepageimg"]:before {
     height: 200px;
     width: 242px;
     background-image:url('https://techtalk.vn/wp-content/uploads/2018/04/techtalk-blog.jpg')
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial;
+    background: #f1f1f1;
+}
+
+/*post style for homepage*/
+.leftcolumn {
+    float: left;
+    width: 850px;
+}
+/* Add a card effect for articles */
+.card {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+
+/*footer*/
+/* Footer */
+.footer {
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+    .leftcolumn, .rightcolumn {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+    .topnav a {
+        float: none;
+        width: 100%;
+    }
 }

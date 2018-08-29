@@ -7,12 +7,16 @@
  */
 namespace App\Http\Controllers;
 use App\Post;
+use App\Category;
+use App\Tag;
 
 class PagesController extends Controller{
     public function getIndex(){
+        $categories = Category::all();
+        $tags = Tag::all();
 
         $posts = Post::orderBy('created_at','desc')->limit(4)->get();
-        return view('pages.welcome')->withPosts($posts);
+        return view('pages.welcome')->withPosts($posts)->withCategories($categories)->withTags($tags);
     }
 
     public function getAbout(){
